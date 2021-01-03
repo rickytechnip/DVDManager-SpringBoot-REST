@@ -51,9 +51,9 @@ public class DvDController {
     
     // Get dvd by title
     @GetMapping("/dvds/title/{title}")
-    public ResponseEntity<DvD> findByTitle(@PathVariable String title) {
-        DvD result = dao.findByTitle(title);
-        if (result == null) {
+    public ResponseEntity<List<DvD>> findByTitle(@PathVariable String title) {
+        List<DvD> result = dao.findByTitle(title);
+        if (result == null || result.size() == 0) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
@@ -61,9 +61,9 @@ public class DvDController {
     
     // get dvd by release year
     @GetMapping("/dvds/year/{year}")
-    public ResponseEntity<DvD> findByReleaseYear(@PathVariable int year) {
-        DvD result = dao.findByReleaseYear(year);
-        if (result == null) {
+    public ResponseEntity<List<DvD>> findByReleaseYear(@PathVariable int year) {
+        List<DvD> result = dao.findByReleaseYear(year);
+        if (result == null || result.size() == 0) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
@@ -71,9 +71,9 @@ public class DvDController {
     
     // get dvd by director name
     @GetMapping("/dvds/director/{dn}")
-    public ResponseEntity<DvD> findByDirectorName(@PathVariable String dn) {
-        DvD result = dao.findByDirectorName(dn);
-        if (result == null) {
+    public ResponseEntity<List<DvD>> findByDirectorName(@PathVariable String dn) {
+        List<DvD> result = dao.findByDirectorName(dn);
+        if (result == null || result.size() == 0) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
@@ -81,9 +81,9 @@ public class DvDController {
     
     // get dvd by rating
     @GetMapping("/dvds/rating/{rating}")
-    public ResponseEntity<DvD> findByRating(@PathVariable String rating) {
-        DvD result = dao.findByRating(rating);
-        if (result == null) {
+    public ResponseEntity<List<DvD>> findByRating(@PathVariable String rating) {
+        List<DvD> result = dao.findByRating(rating);
+        if (result == null || result.size() == 0) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
